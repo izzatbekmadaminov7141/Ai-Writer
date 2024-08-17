@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom'
 import Navbar from '../dashboard/navbar'
 import Sidebar from '../dashboard/sidebar'
 
@@ -7,7 +8,9 @@ const DashboardLayout = () => {
             <Sidebar />
             <div className="w-full">
                 <Navbar />
-                <h1>Component</h1>
+                <div className="p-4">
+                    <Outlet />
+                </div>
             </div>
         </div>
     )
