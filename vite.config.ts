@@ -7,6 +7,10 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
+            './registry.mjs': './registry', // `registry.mjs` ni `registry` bilan almashtirish
         },
+    },
+    optimizeDeps: {
+        exclude: ['openai'], // `openai` kutubxonasini optimize qilishdan istisno qilish
     },
 })

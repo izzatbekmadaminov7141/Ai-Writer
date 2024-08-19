@@ -4,6 +4,7 @@ import { Textarea } from '../ui/textarea'
 import { Button } from '../ui/button'
 import { FormEvent, useState } from 'react'
 import { Loader2 } from 'lucide-react'
+import { GenerateArticle } from '@/utills/openai'
 
 export default function ContentCreate() {
     const [isLoading, setIsLoading] = useState(false)
@@ -11,10 +12,13 @@ export default function ContentCreate() {
         title: '',
         description: '',
     })
-    const handleSubmit = (e: FormEvent) => {
+    const [content, setContent] = useState<string | null>()
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
-        console.log(form)
         setIsLoading(true)
+        const result = await GenerateArticle(form.title, form.description)
+        setContent(result)
+        setIsLoading(false)
     }
     const handelChange = (
         event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,6 +29,7 @@ export default function ContentCreate() {
     return (
         <div>
             <h1 className="text-2xl font-semibold ">Articl Writer</h1>
+            {content && <p>{content}</p>}
             <form className="mt-5" onSubmit={handleSubmit}>
                 <div className="grid w-full  mb-4 gap-1.5">
                     <Label htmlFor="title">Title</Label>

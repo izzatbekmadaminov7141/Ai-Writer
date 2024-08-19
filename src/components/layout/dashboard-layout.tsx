@@ -3,9 +3,16 @@ import Navbar from '../dashboard/navbar'
 import Sidebar from '../dashboard/sidebar'
 
 const DashboardLayout = () => {
-    console.log(import.meta.env.VITE_OPENAI_API_KEY)
+    const apiKey = import.meta.env.VITE_APP_OPEN_AI_KEY
+
+    if (apiKey) {
+        console.log(apiKey)
+    } else {
+        console.error('VITE_APP_OPEN_AI_KEY is undefined!')
+    }
+
     return (
-        <div className=" h-screen overflow-hidden flex">
+        <div className="h-screen overflow-hidden flex">
             <Sidebar />
             <div className="w-full">
                 <Navbar />
@@ -16,4 +23,5 @@ const DashboardLayout = () => {
         </div>
     )
 }
+
 export default DashboardLayout
