@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import DashboardLayout from './components/layout/dashboard-layout'
-import ContentCreate from './components/dashboard/content-create'
+import DashboardHome from './pages/dashboard-home'
 
 const router = createBrowserRouter([
     {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <ContentCreate />,
+                element: <DashboardHome />,
             },
         ],
     },
