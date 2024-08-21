@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import DashboardLayout from './components/layout/dashboard-layout'
 import DashboardHome from './pages/dashboard-home'
+import { AppContextProvider } from './contexts/app.context'
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,8 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <RouterProvider router={router} />
+        <AppContextProvider>
+            <RouterProvider router={router} />
+        </AppContextProvider>
     </StrictMode>
 )
